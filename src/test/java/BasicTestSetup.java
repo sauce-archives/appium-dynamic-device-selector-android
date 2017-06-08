@@ -1,17 +1,15 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import java.net.URL;
+import java.util.UUID;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.net.URL;
-import java.util.UUID;
 
 public class BasicTestSetup {
 
@@ -29,7 +27,7 @@ public class BasicTestSetup {
 		capabilities.setCapability("testobject_api_key", System.getenv("TESTOBJECT_API_KEY")); // API key through env variable
 		//capabilities.setCapability("testobject_api_key", "YOUR_API_KEY")); // API key hardcoded
 
-		capabilities.setCapability("testobject_app_id", "1");
+		capabilities.setCapability("testobject_app_id", System.getenv("TESTOBJECT_APP_ID"));
 
 		capabilities.setCapability("platformName", "android"); // device id through env variable
 		//capabilities.setCapability("testobject_device", "Motorola_Moto_E_2nd_gen_real"); // device id hardcoded
@@ -90,10 +88,10 @@ public class BasicTestSetup {
 	public void zerosDivisionOperation() {
 
         /* Get the elements. */
-		MobileElement digitZero = (MobileElement)(driver.findElement(By.id("net.ludeke.calculator:id/digit0")));
-		MobileElement buttonDivide = (MobileElement)(driver.findElement(By.id("net.ludeke.calculator:id/div")));
-		MobileElement buttonEquals = (MobileElement)(driver.findElement(By.id("net.ludeke.calculator:id/equal")));
-		MobileElement resultField = (MobileElement)(driver.findElement(By.xpath("//android.widget.EditText[1]")));
+		MobileElement digitZero = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/digit0")));
+		MobileElement buttonDivide = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/div")));
+		MobileElement buttonEquals = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/equal")));
+		MobileElement resultField = (MobileElement) (driver.findElement(By.xpath("//android.widget.EditText[1]")));
 
         /* Divide zero by zero. */
 		digitZero.click();
