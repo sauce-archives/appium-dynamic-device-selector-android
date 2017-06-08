@@ -23,14 +23,12 @@ public class BasicTestSetup {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        /* These are the capabilities we must provide to run our test on TestObject. */
 		capabilities.setCapability("testobject_api_key", System.getenv("TESTOBJECT_API_KEY")); // API key through env variable
-		//capabilities.setCapability("testobject_api_key", "YOUR_API_KEY")); // API key hardcoded
 
 		capabilities.setCapability("testobject_app_id", System.getenv("TESTOBJECT_APP_ID"));
 
-		capabilities.setCapability("platformName", "android"); // device id through env variable
-		//capabilities.setCapability("testobject_device", "Motorola_Moto_E_2nd_gen_real"); // device id hardcoded
+		capabilities.setCapability("platformName", "android");
+		capabilities.setCapability("platformVersion", System.getenv("PLATFORM_VERSION"));
 
 		String appiumVersion = System.getenv("TESTOBJECT_APPIUM_VERSION");
 		if (appiumVersion != null && appiumVersion.trim().isEmpty() == false) {
@@ -42,7 +40,6 @@ public class BasicTestSetup {
 			capabilities.setCapability("testobject_cache_device", cacheDevice);
 		}
 
-		// We generate a random UUID for later lookup in logs for debugging
 		String testUUID = UUID.randomUUID().toString();
 		System.out.println("TestUUID: " + testUUID);
 		capabilities.setCapability("testobject_testuuid", testUUID);
