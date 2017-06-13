@@ -76,26 +76,4 @@ public class BasicTestSetup {
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.textToBePresentInElement(resultField, EXPECTED_RESULT_FOUR));
 
 	}
-
-	/* A simple zero divided by zero operation. */
-	@Test
-	public void zerosDivisionOperation() {
-
-        /* Get the elements. */
-		MobileElement digitZero = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/digit0")));
-		MobileElement buttonDivide = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/div")));
-		MobileElement buttonEquals = (MobileElement) (driver.findElement(By.id("net.ludeke.calculator:id/equal")));
-		MobileElement resultField = (MobileElement) (driver.findElement(By.xpath("//android.widget.EditText[1]")));
-
-        /* Divide zero by zero. */
-		digitZero.click();
-		buttonDivide.click();
-		digitZero.click();
-		buttonEquals.click();
-
-        /* Check if within given time the correct error message appears in the designated field. */
-		(new WebDriverWait(driver, 30)).until(ExpectedConditions.textToBePresentInElement(resultField, EXPECTED_RESULT_NAN));
-
-	}
-
 }
