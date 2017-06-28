@@ -29,6 +29,7 @@ public class BasicTestSetup {
 
 		capabilities.setCapability("platformName", "android");
 		capabilities.setCapability("platformVersion", System.getenv("PLATFORM_VERSION"));
+		capabilities.setCapability("privateDevicesOnly", getEnvOrDefault("PRIVATE_DEVICES_ONLY","false"));
 
 		String appiumVersion = System.getenv("TESTOBJECT_APPIUM_VERSION");
 		if (appiumVersion != null && appiumVersion.trim().isEmpty() == false) {
@@ -98,4 +99,12 @@ public class BasicTestSetup {
 
 	}
 
+	private static String getEnvOrDefault(String environmentVariable, String defaultValue) {
+		String value = System.getenv(environmentVariable);
+		if (value == null) {
+			return defaultValue;
+		} else {
+			return value;
+		}
+	}
 }
