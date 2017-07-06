@@ -26,7 +26,8 @@ pipeline {
 
     post {
         always {
-            junit "**/test-results/TEST-*.xml"
+            sh "ls -lR"
+            junit "build/test-results/**.xml"
         }
         failure {
             script {
